@@ -75,6 +75,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Leetcode-NO-2-Palindrome-Number" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/30/Leetcode-NO-2-Palindrome-Number/" class="article-date">
+  <time class="dt-published" datetime="2023-01-30T04:13:44.585Z" itemprop="datePublished">2023-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Givren an integer x , return true if x is a palindrome, and false otherwise.</p>
+<p>Example 1:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Input</span>: x=<span class="number">121</span></span><br><span class="line"><span class="title class_">Output</span>: <span class="literal">true</span></span><br><span class="line"><span class="title class_">Explanation</span>: <span class="number">121</span> reads <span class="keyword">as</span> <span class="number">121</span> <span class="keyword">from</span> left to right and <span class="keyword">from</span> right to left.</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Input</span>: x = -<span class="number">121</span></span><br><span class="line"><span class="title class_">Output</span>: <span class="literal">false</span></span><br><span class="line"><span class="title class_">Explanation</span>: <span class="title class_">From</span> left to right, it reads -<span class="number">121.</span> <span class="title class_">From</span> right to left, it becomes <span class="number">121</span>-. <span class="title class_">Therefore</span> it is not a palindrome.</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Inout</span>: x = <span class="number">10</span></span><br><span class="line"><span class="title class_">Output</span>: <span class="literal">false</span></span><br><span class="line"><span class="title class_">Explanationg</span>: <span class="title class_">Reads</span> <span class="number">01</span> <span class="keyword">from</span> right to left. <span class="title class_">Therefore</span> it is not a palindrome.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Soulution"><a href="#Soulution" class="headerlink" title="Soulution"></a>Soulution</h2><h6 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1:"></a>Solution 1:</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">x</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">boolean</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isPalindrome = <span class="keyword">function</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> y = x.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span>(x==<span class="title class_">Number</span>(y)) <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation:"></a>Explanation:</h6><p>The javascript method of array-reverse is used in this solution. And you need to change the data format from number to string first. Then split it into an array. But it has a risk about integer overflow when the x is reversed.</p>
+<h6 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a>Solution 2:</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">x</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">boolean</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isPalindrome = <span class="keyword">function</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(x&lt;<span class="number">0</span>||x%<span class="number">10</span>==<span class="number">0</span>&amp;&amp;x!=<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  <span class="keyword">let</span> revertNumber = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span>(x&lt;revertNumber)&#123;</span><br><span class="line">    revertNumber = x*<span class="number">10</span>+x%<span class="number">10</span></span><br><span class="line">    x = x/<span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> x===revertNumber||x===revertNumber/<span class="number">10</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Explanation-1"><a href="#Explanation-1" class="headerlink" title="Explanation:"></a>Explanation:</h6><p>This solution avoid the risk of integer overflow. The key is to find the revertNumber using a loop. If x is an odd number and x is equal to revertNumber&#x2F;10(cause revertNumber has the middle number, so we must remove the middle number) after the while-loop , the function returns true. If x is an even number , we just judge whether x is equal to revertNumber after the while-loop.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/01/30/Leetcode-NO-2-Palindrome-Number/" data-id="cldik8qyh00006kvxc2vib2oj" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Leetcode-NO-1-Two-Sum" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/01/29/Leetcode-NO-1-Two-Sum/" class="article-date">
@@ -248,6 +292,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/01/30/Leetcode-NO-2-Palindrome-Number/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2023/01/29/Leetcode-NO-1-Two-Sum/">Leetcode NO.1 Two Sum</a>
