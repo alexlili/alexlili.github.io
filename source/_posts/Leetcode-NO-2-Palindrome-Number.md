@@ -1,5 +1,5 @@
 ---
-fuctitle: Leetcode NO.2 Palindrome Number
+title: Leetcode NO.2 Palindrome Number
 ---
 ## Description
 
